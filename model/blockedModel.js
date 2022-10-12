@@ -15,4 +15,4 @@ const blockedModel = mongoose.Schema({
   },
 });
 
-module.exports = blockedModel;
+module.exports = mongoose.model("Block", blockedModel);

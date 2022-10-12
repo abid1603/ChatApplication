@@ -31,17 +31,19 @@ const signupHandler = async (req, res) => {
 
 const loginHandler = async (req, res) => {
   try {
-    const user = await User.find({ username: req.body.username })
-    if (user && user.length > 0) {
+    const user = await User.findOne({ 
+      $or:[{username: req.body.username},{phone: req.body.username}],
+    })
+    if (user && user._id) {
       const isValidPassword = await bcrypt.compare(
         req.body.password,
-        user[0].password
+        user.password
       )
       if (isValidPassword) {
         const token = jwt.sign(
           {
-            username: user[0].username,
-            userID: user[0]._id,
+            username: user.username,
+            userID: user._id,
           },
           process.env.JWT_SECRET,
           {

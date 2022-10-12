@@ -15,4 +15,4 @@ const conversationModel = mongoose.Schema({
   },
 });
 
-module.exports = conversationModel;
+module.exports = mongoose.model("Conversation", conversationModel);

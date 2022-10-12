@@ -2,6 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
 const userHandler = require("../routes/userRoutes")
+const conversationHandler = require("../routes/conversationRoutes")
 
 const app = express()
 dotenv.config()
@@ -15,6 +16,7 @@ mongoose
 
 // routes
 app.use("/user", userHandler)
+app.use("/conversation", conversationHandler)
 
 //error handler
 function errorHandler(err, req, res, next) {

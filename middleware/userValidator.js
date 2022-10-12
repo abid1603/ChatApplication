@@ -52,7 +52,6 @@ const addUserValidators = [
 ];
 
 const addUserValidationHandler = function (req, res, next) {
-    console.log(User);
   const errors = validationResult(req);
   const mappedErrors = errors.mapped();
   if (Object.keys(mappedErrors).length === 0) {
